@@ -13,9 +13,6 @@ def description_query(resume):
     soup = BeautifulSoup(html_text, "lxml")
     description = soup.find('div', class_ = "jobsearch-jobDescriptionText").text.strip()
     rating = rate_job(resume, description.lower())
-    #print(description.lower())
-    #print(rating)
-    #print("\n")
     job.append(rating)
 
     
