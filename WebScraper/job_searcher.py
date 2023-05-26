@@ -10,38 +10,30 @@ def jobsearch():
   soup = BeautifulSoup(html_text, "lxml")
   jobs = soup.find_all('a')
   
-  #jobs = soup.find_all('table', class_ = "jobCard_mainContent")
-  #print(jobs)
   for job in jobs:
     is_job_anchor = False
     job_info = []
-    #job_name = job.find("div[class*=jobTitle]") # with *= means: contains
-    #job_name = job.find('h2', class_ = lambda value: value and value.startswith("jobTitle"))
     job_name = job.find('h2', class_ = "jobTitle jobTitle-color-purple")
     if job_name != None:
       position = job_name.text.strip()
-      #print(f'''Position: {position} ''')
       is_job_anchor = True
       job_info.append(position)
     
     job_name = job.find('h2', class_ = "jobTitle jobTitle-color-purple jobTitle-newJob")
     if job_name != None:
       position = job_name.text.strip()[3:]
-      #print(f'''Position: (New) {position} ''')
       is_job_anchor = True
       job_info.append(position)
 
     company_name = job.find('span', class_ = "companyName")
     if company_name != None:
       company = company_name.text.strip()
-      #print(f'''Company Name: {company} ''')
       is_job_anchor = True
       job_info.append(company)
 
     location = job.find('div', class_ = "companyLocation")
     if location != None:
       job_location = location.text.strip()
-      #print(f'''Location: {job_location} ''')
       is_job_anchor = True
       job_info.append(job_location)
 
