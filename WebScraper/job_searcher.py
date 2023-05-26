@@ -41,10 +41,7 @@ def jobsearch():
       more_info = job['href']
       if more_info != None:
         link = "https://ca.indeed.com" + more_info
-        #print(f'''Link: {link}''')
         job_info.append(link)
-      #print("\n")
     
     if len(job_info) != 0:
       list_of_jobs.append(job_info)
-  #print("end of test")
